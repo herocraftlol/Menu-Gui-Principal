@@ -1,4 +1,25 @@
-# 🎮 MainMenu Plugin — Guide d'installation
+# 🎮 MainMenu Plugin — Menu GUI Configurable
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.20+-green)
+![Platform](https://img.shields.io/badge/Platform-BungeeCord%20%2B%20Spigot-orange)
+
+**Plugin Minecraft BungeeCord + Spigot** qui affiche un menu GUI configurable via la commande `/menu`.
+
+---
+
+## ⬇️ Téléchargement
+
+📦 **Dernière version: v1.0.0**
+
+| Plugin | Fichier | Description |
+|--------|---------|-------------|
+| **BungeeCord** | [`MainMenuBungee-1.0.0.jar`](https://github.com/herocraftlol/Menu-Gui-Principal/releases/download/v1.0.0/MainMenuBungee-1.0.0.jar) | Plugin à installer sur votre proxy BungeeCord |
+| **Spigot** | [`MainMenuSpigot-1.0.0.jar`](https://github.com/herocraftlol/Menu-Gui-Principal/releases/download/v1.0.0/MainMenuSpigot-1.0.0.jar) | Plugin à installer sur chaque serveur Spigot |
+
+➡️ **[Toutes les releases](https://github.com/herocraftlol/Menu-Gui-Principal/releases)**
+
+---
 
 Plugin Minecraft **BungeeCord + Spigot** qui affiche un **menu GUI configurable** via `/menu`.
 
