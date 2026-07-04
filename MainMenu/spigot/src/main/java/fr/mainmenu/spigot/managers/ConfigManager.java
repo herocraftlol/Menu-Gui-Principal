@@ -40,8 +40,20 @@ public class ConfigManager {
 
     // === Items du menu ===
     public List<MenuItem> getMenuItems() {
+        return parseMenuItems(config.getConfigurationSection("menu.items"));
+    }
+
+    // === Items de la hotbar personnalisée (zone de hub) ===
+    public boolean isHotbarEnabled() {
+        return config.getBoolean("hotbar.enabled", true);
+    }
+
+    public List<MenuItem> getHotbarItems() {
+        return parseMenuItems(config.getConfigurationSection("hotbar.items"));
+    }
+
+    private List<MenuItem> parseMenuItems(ConfigurationSection section) {
         List<MenuItem> items = new ArrayList<>();
-        ConfigurationSection section = config.getConfigurationSection("menu.items");
         if (section == null) return items;
 
         for (String key : section.getKeys(false)) {

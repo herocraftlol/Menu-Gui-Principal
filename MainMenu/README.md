@@ -1,25 +1,4 @@
-# 🎮 MainMenu Plugin — Menu GUI Configurable
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Minecraft](https://img.shields.io/badge/Minecraft-1.20+-green)
-![Platform](https://img.shields.io/badge/Platform-BungeeCord%20%2B%20Spigot-orange)
-
-**Plugin Minecraft BungeeCord + Spigot** qui affiche un menu GUI configurable via la commande `/menu`.
-
----
-
-## ⬇️ Téléchargement
-
-📦 **Dernière version: v1.0.0**
-
-| Plugin | Fichier | Description |
-|--------|---------|-------------|
-| **BungeeCord** | [`MainMenuBungee-1.0.0.jar`](https://github.com/herocraftlol/Menu-Gui-Principal/releases/download/v1.0.0/MainMenuBungee-1.0.0.jar) | Plugin à installer sur votre proxy BungeeCord |
-| **Spigot** | [`MainMenuSpigot-1.0.0.jar`](https://github.com/herocraftlol/Menu-Gui-Principal/releases/download/v1.0.0/MainMenuSpigot-1.0.0.jar) | Plugin à installer sur chaque serveur Spigot |
-
-➡️ **[Toutes les releases](https://github.com/herocraftlol/Menu-Gui-Principal/releases)**
-
----
+# 🎮 MainMenu Plugin — Guide d'installation
 
 Plugin Minecraft **BungeeCord + Spigot** qui affiche un **menu GUI configurable** via `/menu`.
 
@@ -39,13 +18,18 @@ MainMenu/
     └── src/main/java/fr/mainmenu/spigot/
         ├── MainMenuSpigot.java
         ├── commands/MenuCommand.java
+        ├── commands/HubZoneCommand.java
         ├── gui/MenuGui.java
         ├── listeners/GuiClickListener.java
         ├── listeners/PlayerJoinListener.java
+        ├── listeners/ZoneListener.java
+        ├── listeners/HotbarInteractListener.java
         ├── managers/ConfigManager.java
         ├── managers/PlayerCountManager.java
+        ├── managers/ZoneManager.java
+        ├── managers/HotbarManager.java
         ├── messaging/PluginMessageReceiver.java
-        └── utils/ItemBuilder.java
+        └── utils/ItemBuilder.java, ActionHandler.java
 ```
 
 ---
@@ -185,6 +169,64 @@ servers:
 
 ---
 
+## 🎒 Hotbar personnalisée dans une zone de hub
+
+En plus du GUI `/menu`, le plugin peut afficher une **hotbar personnalisée**
+(menu + raccourcis) qui n'apparaît que lorsque le joueur se trouve dans une
+zone que vous délimitez vous-même, monde par monde. Dès qu'il quitte la zone,
+sa hotbar d'origine (les items qu'il avait en main) lui est automatiquement rendue.
+
+### 1. Définir la zone (une fois par monde)
+Placez-vous au premier coin de la zone souhaitée, puis :
+```
+/hubzone pos1
+```
+Allez au coin opposé (en diagonale), puis :
+```
+/hubzone pos2
+```
+➜ La zone est immédiatement sauvegardée pour **le monde dans lequel vous êtes**
+(fichier `zones.yml`, généré automatiquement).
+
+### 2. Autres commandes
+| Commande | Description |
+|----------|--------------|
+| `/hubzone pos1` | Définit le premier coin de la zone |
+| `/hubzone pos2` | Définit le second coin et sauvegarde la zone |
+| `/hubzone info` | Affiche les coordonnées de la zone du monde actuel |
+| `/hubzone remove` | Supprime la zone du monde actuel |
+
+### 3. Configurer le contenu de la hotbar
+Tout se règle dans `config.yml`, section `hotbar.items` (slots 0 à 8) :
+```yaml
+hotbar:
+  enabled: true
+  items:
+    menu:
+      slot: 0
+      material: NETHER_STAR
+      name: "&b✦ &fMenu des Mondes"
+      action:
+        type: OPEN_MENU   # ← ouvre le GUI /menu avec la liste des serveurs
+        value: ""
+    shop:
+      slot: 1
+      material: EMERALD
+      name: "&a🛒 &2Boutique"
+      action:
+        type: URL
+        value: "https://boutique.votreserveur.fr"
+```
+Les mêmes types d'actions que pour le menu (`CONNECT`, `COMMAND`, `URL`, `MESSAGE`, ...)
+sont disponibles, plus `OPEN_MENU` qui ouvre le GUI principal. Par défaut, la
+hotbar fournie contient : le menu des mondes, la boutique, `/friend`, Discord,
+le site et le vote.
+
+⚠️ Cette fonctionnalité est **Spigot uniquement** (pas de zone côté BungeeCord) :
+chaque serveur Spigot gère sa propre zone de hub indépendamment.
+
+---
+
 ## 🔧 Commandes
 
 | Commande | Description | Permission |
@@ -193,6 +235,7 @@ servers:
 | `/menu reload` | Recharge la configuration | `mainmenu.reload` |
 | `/hub` | Retourne au hub | `mainmenu.hub` |
 | `/lobby` | Retourne au lobby | `mainmenu.hub` |
+| `/hubzone pos1\|pos2\|info\|remove` | Gère la zone de hub (hotbar) | `mainmenu.admin` |
 
 ---
 
@@ -203,6 +246,7 @@ servers:
 | `mainmenu.use` | Ouvrir le menu | Tous |
 | `mainmenu.reload` | Recharger la config | OP |
 | `mainmenu.hub` | Utiliser /hub et /lobby | Tous |
+| `mainmenu.admin` | Définir la zone de hub (/hubzone) | OP |
 
 ---
 

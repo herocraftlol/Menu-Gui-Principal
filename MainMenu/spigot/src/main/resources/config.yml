@@ -1,6 +1,6 @@
 # ============================================================
 #           MainMenu - Configuration Principale
-#  Plugin de menu BungeeCord configurable par GUI
+#  Plugin de menu BungeeCord configurable par GUI + hotbar
 # ============================================================
 
 # === PARAMÈTRES BUNGEE ===
@@ -8,7 +8,7 @@ bungee:
   # Nom du serveur hub/lobby dans votre BungeeCord (config.yml de BungeeCord)
   hub-server: "lobby"
 
-# === MENU PRINCIPAL ===
+# === MENU PRINCIPAL (GUI ouvert via /menu) ===
 menu:
   # Titre du menu (supporte les codes couleurs &)
   title: "&8✦ &bMenu Principal &8✦"
@@ -27,12 +27,13 @@ menu:
   #   glowing    : true = effet d'enchantement visuel
   #   custom-model-data : ID pour resource pack custom (0 = désactivé)
   #
-  # Action disponibles :
+  # Actions disponibles :
   #   type: CONNECT          → Connecte au serveur BungeeCord (value: nom serveur)
   #   type: COMMAND          → Exécute une commande en tant que joueur (value: commande)
   #   type: CONSOLE_COMMAND  → Exécute une commande en console (value: commande)
   #   type: URL              → Envoie un lien cliquable dans le chat (value: URL)
   #   type: MESSAGE          → Envoie un message au joueur (value: texte)
+  #   type: OPEN_MENU        → Ouvre le GUI du menu principal (utilisé par la hotbar)
   #   type: CLOSE            → Ferme le menu
   #   type: NONE             → Aucune action (item décoratif)
   #
@@ -69,7 +70,7 @@ menu:
 
     # --- Liste des amis (/friend gui) ---
     friends:
-      slot: 20
+      slot: 37
       material: LIME_DYE
       name: "&a👥 &2Amis"
       glowing: false
@@ -85,7 +86,7 @@ menu:
 
     # --- Retour au lobby ---
     hub:
-      slot: 22
+      slot: 38
       material: COMPASS
       name: "&b🏠 &3Lobby"
       glowing: true
@@ -101,7 +102,7 @@ menu:
 
     # --- Site internet ---
     website:
-      slot: 24
+      slot: 39
       material: BOOK
       name: "&d🌐 &5Site Internet"
       glowing: false
@@ -119,7 +120,7 @@ menu:
 
     # --- Discord ---
     discord:
-      slot: 38
+      slot: 40
       material: PURPLE_DYE
       name: "&5💬 &dDiscord"
       glowing: false
@@ -137,7 +138,7 @@ menu:
 
     # --- Boutique ---
     shop:
-      slot: 40
+      slot: 41
       material: EMERALD
       name: "&a🛒 &2Boutique"
       glowing: false
@@ -182,153 +183,46 @@ menu:
         value: ""
 
     # --- Séparateurs décoratifs (vitres grises) ---
-    deco_1:
-      slot: 0
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row0_1: { slot: 0, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_2: { slot: 1, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_3: { slot: 2, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_4: { slot: 3, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_5: { slot: 5, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_6: { slot: 6, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_7: { slot: 7, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row0_8: { slot: 8, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
-    deco_2:
-      slot: 1
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row1_1: { slot: 9,  material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row1_2: { slot: 17, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
-    deco_3:
-      slot: 2
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row2_1: { slot: 18, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row2_2: { slot: 26, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
-    deco_4:
-      slot: 3
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row3_1: { slot: 27, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_2: { slot: 28, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_3: { slot: 29, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_4: { slot: 30, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_5: { slot: 32, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_6: { slot: 33, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_7: { slot: 34, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row3_8: { slot: 35, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
-    deco_5:
-      slot: 5
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row4_1: { slot: 36, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row4_2: { slot: 43, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row4_3: { slot: 44, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
-    deco_6:
-      slot: 6
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_7:
-      slot: 7
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_8:
-      slot: 8
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_9:
-      slot: 45
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_10:
-      slot: 46
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_11:
-      slot: 47
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_12:
-      slot: 48
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_13:
-      slot: 50
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_14:
-      slot: 51
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_15:
-      slot: 52
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
-
-    deco_16:
-      slot: 53
-      material: GRAY_STAINED_GLASS_PANE
-      name: " "
-      lore: []
-      action:
-        type: NONE
-        value: ""
+    deco_row5_1:  { slot: 45, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_2:  { slot: 46, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_3:  { slot: 47, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_4:  { slot: 48, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_5:  { slot: 50, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_6:  { slot: 51, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_7:  { slot: 52, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
+    deco_row5_8:  { slot: 53, material: GRAY_STAINED_GLASS_PANE, name: " ", lore: [], action: { type: NONE, value: "" } }
 
 # ============================================================
 # SERVEURS BUNGEECORD
-# Configurez ici tous vos serveurs avec téléportation + joueurs
+# Correspond à la liste de vos serveurs (/server <nom>)
 #
 # Placeholders dans name/lore :
 #   %players%  → Nombre de joueurs connectés sur ce serveur
@@ -336,89 +230,325 @@ menu:
 # ============================================================
 servers:
 
-  survival:
-    display-name: "&2⛏ &aSurvie"
-    server-name: "survival"   # Nom exact dans config.yml BungeeCord
+  blitz:
+    display-name: "&6⚔ &eBlitz"
+    server-name: "blitz"
     slot: 10
-    material: GRASS_BLOCK
-    lore:
-      - ""
-      - "&7Mode Survie classique."
-      - ""
-      - "&a● &f%players% joueur(s) en ligne"
-      - ""
-      - "&eCliquez pour rejoindre !"
-      - ""
-
-  skyblock:
-    display-name: "&b☁ &3Skyblock"
-    server-name: "skyblock"
-    slot: 11
-    material: END_STONE
-    lore:
-      - ""
-      - "&7Construisez votre île dans le ciel !"
-      - ""
-      - "&a● &f%players% joueur(s) en ligne"
-      - ""
-      - "&eCliquez pour rejoindre !"
-      - ""
-
-  creative:
-    display-name: "&e✏ &6Créatif"
-    server-name: "creative"
-    slot: 12
-    material: BRICKS
-    lore:
-      - ""
-      - "&7Laissez libre cours à votre créativité."
-      - ""
-      - "&a● &f%players% joueur(s) en ligne"
-      - ""
-      - "&eCliquez pour rejoindre !"
-      - ""
-
-  pvp:
-    display-name: "&c⚔ &4PvP"
-    server-name: "pvp"
-    slot: 13
     material: IRON_SWORD
     lore:
       - ""
-      - "&7Affrontez d'autres joueurs !"
+      - "&7Survivez et éliminez vos adversaires !"
       - ""
       - "&a● &f%players% joueur(s) en ligne"
       - ""
       - "&eCliquez pour rejoindre !"
       - ""
 
-  minigames:
-    display-name: "&d🎮 &5Mini-Jeux"
-    server-name: "minigames"
+  hikabrain:
+    display-name: "&d🐑 &5HikaBrain"
+    server-name: "hikabrain"
+    slot: 11
+    material: MAGENTA_TERRACOTTA
+    lore:
+      - ""
+      - "&7Envoyez les moutons dans le but adverse !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  spaceship:
+    display-name: "&b🚀 &3SpaceShip"
+    server-name: "spaceship"
+    slot: 12
+    material: FIREWORK_ROCKET
+    lore:
+      - ""
+      - "&7Combattez à bord de vaisseaux spatiaux !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  skillkabrain:
+    display-name: "&d🎯 &5SkillKaBrain"
+    server-name: "skillkabrain"
+    slot: 13
+    material: DIAMOND_HELMET
+    lore:
+      - ""
+      - "&7La version skill de HikaBrain !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  push:
+    display-name: "&e➤ &6Push"
+    server-name: "push"
     slot: 14
-    material: DIAMOND
+    material: PISTON
     lore:
       - ""
-      - "&7Profitez de nombreux mini-jeux !"
+      - "&7Poussez la ligne jusqu'à la base adverse !"
       - ""
       - "&a● &f%players% joueur(s) en ligne"
       - ""
       - "&eCliquez pour rejoindre !"
       - ""
 
-  rpg:
-    display-name: "&6🗡 &eRPG"
-    server-name: "rpg"
+  bedwars:
+    display-name: "&c🛏 &4BedWars"
+    server-name: "bedwars"
     slot: 15
-    material: NETHERITE_SWORD
+    material: RED_BED
     lore:
       - ""
-      - "&7Aventure et quêtes RPG."
+      - "&7Protégez votre lit et détruisez ceux des autres !"
       - ""
       - "&a● &f%players% joueur(s) en ligne"
       - ""
       - "&eCliquez pour rejoindre !"
       - ""
+
+  wave:
+    display-name: "&2☣ &aWave"
+    server-name: "wave"
+    slot: 16
+    material: ROTTEN_FLESH
+    lore:
+      - ""
+      - "&7Survivez à des vagues de zombies !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  jump:
+    display-name: "&b🐇 &3Jump"
+    server-name: "jump"
+    slot: 19
+    material: SLIME_BALL
+    lore:
+      - ""
+      - "&7Enchaînez les parcours de parkour !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  hungergames:
+    display-name: "&4🏹 &cHungerGames"
+    server-name: "hungergames"
+    slot: 20
+    material: BOW
+    lore:
+      - ""
+      - "&7Le dernier survivant l'emporte !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  faction:
+    display-name: "&7🛡 &8Faction"
+    server-name: "faction"
+    slot: 21
+    material: SHIELD
+    lore:
+      - ""
+      - "&7Créez votre faction et conquérez le monde !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  mixbattle:
+    display-name: "&9⚒ &1MixBattle"
+    server-name: "mixbattle"
+    slot: 22
+    material: ANVIL
+    lore:
+      - ""
+      - "&7Un mélange explosif de mini-jeux !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  tntwars:
+    display-name: "&c💣 &4TNTWars"
+    server-name: "tntwars"
+    slot: 23
+    material: TNT
+    lore:
+      - ""
+      - "&7Détruisez la plateforme adverse à la TNT !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  cachecache:
+    display-name: "&e🎃 &6Cache-Cache"
+    server-name: "cachecache"
+    slot: 24
+    material: CARVED_PUMPKIN
+    lore:
+      - ""
+      - "&7Trouvez les joueurs cachés avant la fin du temps !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  spide:
+    display-name: "&8🕷 &7Spide"
+    server-name: "spide"
+    slot: 25
+    material: COBWEB
+    lore:
+      - ""
+      - "&7Un mini-jeu à découvrir sans plus attendre !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  shootcraft:
+    display-name: "&b🎯 &3ShootCraft"
+    server-name: "shootcraft"
+    slot: 31
+    material: CROSSBOW
+    lore:
+      - ""
+      - "&7Un mode de tir nerveux et rapide !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+# ============================================================
+# HOTBAR PERSONNALISÉE
+# Affichée UNIQUEMENT sur Spigot, et uniquement quand le joueur
+# se trouve dans la zone de hub définie avec /hubzone pos1 puis
+# /hubzone pos2 (une zone par monde). Voir /hubzone info et
+# /hubzone remove pour la gérer.
+#
+# Champs disponibles : identiques à menu.items (slot de 0 à 8 uniquement)
+# Action supplémentaire :
+#   type: OPEN_MENU → Ouvre le GUI du menu principal (liste des serveurs)
+# ============================================================
+hotbar:
+  enabled: true
+  items:
+
+    menu:
+      slot: 0
+      material: NETHER_STAR
+      name: "&b✦ &fMenu des Mondes"
+      glowing: true
+      lore:
+        - ""
+        - "&7Ouvre le menu pour rejoindre"
+        - "&7un des mini-jeux du serveur."
+        - ""
+        - "&eClic pour ouvrir !"
+        - ""
+      action:
+        type: OPEN_MENU
+        value: ""
+
+    shop:
+      slot: 1
+      material: EMERALD
+      name: "&a🛒 &2Boutique"
+      glowing: false
+      lore:
+        - ""
+        - "&7Achetez des grades et des cosmétiques."
+        - ""
+        - "&eClic pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://boutique.votreserveur.fr"
+
+    friend:
+      slot: 2
+      material: LIME_DYE
+      name: "&a👥 &2Amis"
+      glowing: false
+      lore:
+        - ""
+        - "&7Voir et gérer vos amis."
+        - ""
+        - "&eClic pour ouvrir !"
+        - ""
+      action:
+        type: COMMAND
+        value: "friend gui"
+
+    discord:
+      slot: 3
+      material: PURPLE_DYE
+      name: "&5💬 &dDiscord"
+      glowing: false
+      lore:
+        - ""
+        - "&7Rejoignez notre serveur Discord !"
+        - ""
+        - "&ediscord.gg/votreserveur"
+        - ""
+        - "&eClic pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://discord.gg/votreserveur"
+
+    website:
+      slot: 4
+      material: BOOK
+      name: "&d🌐 &5Site Internet"
+      glowing: false
+      lore:
+        - ""
+        - "&7Visitez notre site officiel."
+        - ""
+        - "&ewww.votreserveur.fr"
+        - ""
+        - "&eClic pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://www.votreserveur.fr"
+
+    vote:
+      slot: 5
+      material: GOLD_INGOT
+      name: "&6🗳 &eVoter"
+      glowing: false
+      lore:
+        - ""
+        - "&7Votez pour nous et gagnez des récompenses !"
+        - ""
+        - "&eClic pour voter !"
+        - ""
+      action:
+        type: URL
+        value: "https://www.votreserveur.fr/vote"
 
 # ============================================================
 # MESSAGES
@@ -428,3 +558,11 @@ messages:
   teleporting: "&7Connexion au serveur &b%server% &7en cours..."
   click-link: "&7Cliquez ici pour ouvrir : &b&n%url%"
   reload-success: "&aConfiguration rechargée avec succès !"
+
+  # --- Messages liés à /hubzone ---
+  zone-pos1-set: "&aPosition 1 enregistrée. Rendez-vous à l'autre coin puis faites &f/hubzone pos2&a."
+  zone-no-pos1: "&cVous devez d'abord définir la position 1 avec &f/hubzone pos1&c."
+  zone-different-world: "&cLes deux positions doivent être dans le même monde !"
+  zone-saved: "&aZone de hub enregistrée pour le monde &f%world%&a ! La hotbar personnalisée s'y affichera désormais."
+  zone-removed: "&aLa zone de hub de ce monde a été supprimée."
+  zone-none: "&cAucune zone de hub n'est définie sur ce monde."

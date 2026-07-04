@@ -1,5 +1,5 @@
 name: MainMenuSpigot
-version: 1.0.0
+version: 1.1.0
 main: fr.mainmenu.spigot.MainMenuSpigot
 api-version: 1.20
 author: MainMenu
@@ -20,6 +20,11 @@ commands:
     description: Retourne au lobby
     usage: /lobby
     permission: mainmenu.hub
+  hubzone:
+    description: Définit la zone de hub où s'affiche la hotbar personnalisée
+    usage: /hubzone <pos1|pos2|remove|info>
+    permission: mainmenu.admin
+    aliases: [hzone]
 
 permissions:
   mainmenu.use:
@@ -31,3 +36,6 @@ permissions:
   mainmenu.hub:
     description: Permet d'utiliser /hub et /lobby
     default: true
+  mainmenu.admin:
+    description: Permet de définir la zone de hub (/hubzone)
+    default: op
