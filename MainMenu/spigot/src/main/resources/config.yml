@@ -1,0 +1,430 @@
+# ============================================================
+#           MainMenu - Configuration Principale
+#  Plugin de menu BungeeCord configurable par GUI
+# ============================================================
+
+# === PARAMÈTRES BUNGEE ===
+bungee:
+  # Nom du serveur hub/lobby dans votre BungeeCord (config.yml de BungeeCord)
+  hub-server: "lobby"
+
+# === MENU PRINCIPAL ===
+menu:
+  # Titre du menu (supporte les codes couleurs &)
+  title: "&8✦ &bMenu Principal &8✦"
+  # Taille de l'inventaire : 9, 18, 27, 36, 45 ou 54
+  size: 54
+
+  # -------------------------------------------------------
+  # ITEMS PERSONNALISÉS
+  # Chaque item a un identifiant unique (clé YAML)
+  #
+  # Champs disponibles :
+  #   slot       : Position dans l'inventaire (0-53)
+  #   material   : Nom du matériau Bukkit (ex: DIAMOND, GRASS_BLOCK)
+  #   name       : Nom affiché (codes couleur &)
+  #   lore       : Description (liste de lignes)
+  #   glowing    : true = effet d'enchantement visuel
+  #   custom-model-data : ID pour resource pack custom (0 = désactivé)
+  #
+  # Action disponibles :
+  #   type: CONNECT          → Connecte au serveur BungeeCord (value: nom serveur)
+  #   type: COMMAND          → Exécute une commande en tant que joueur (value: commande)
+  #   type: CONSOLE_COMMAND  → Exécute une commande en console (value: commande)
+  #   type: URL              → Envoie un lien cliquable dans le chat (value: URL)
+  #   type: MESSAGE          → Envoie un message au joueur (value: texte)
+  #   type: CLOSE            → Ferme le menu
+  #   type: NONE             → Aucune action (item décoratif)
+  #
+  # Placeholders disponibles dans name/lore/message :
+  #   %player%       → Nom du joueur
+  #   %displayname%  → Nom affiché du joueur
+  #   %health%       → Points de vie
+  #   %level%        → Niveau XP
+  #   %world%        → Monde actuel
+  #   %ping%         → Ping du joueur
+  #   %gamemode%     → Mode de jeu
+  #   %food%         → Niveau de faim
+  # -------------------------------------------------------
+  items:
+
+    # --- Informations du joueur ---
+    player_info:
+      slot: 4
+      material: PLAYER_HEAD
+      name: "&e⭐ &6%player%"
+      glowing: false
+      lore:
+        - ""
+        - "&7❤ &cVie : &f%health%/20"
+        - "&7⚡ &eNiveau : &f%level%"
+        - "&7🌍 &bMonde : &f%world%"
+        - "&7📶 &aPing : &f%ping% ms"
+        - "&7🎮 &dMode : &f%gamemode%"
+        - "&7🍖 &6Faim : &f%food%/20"
+        - ""
+      action:
+        type: NONE
+        value: ""
+
+    # --- Liste des amis (/friend gui) ---
+    friends:
+      slot: 20
+      material: LIME_DYE
+      name: "&a👥 &2Amis"
+      glowing: false
+      lore:
+        - ""
+        - "&7Voir et gérer vos amis."
+        - ""
+        - "&eCliquez pour ouvrir !"
+        - ""
+      action:
+        type: COMMAND
+        value: "friend gui"
+
+    # --- Retour au lobby ---
+    hub:
+      slot: 22
+      material: COMPASS
+      name: "&b🏠 &3Lobby"
+      glowing: true
+      lore:
+        - ""
+        - "&7Retourner au lobby principal."
+        - ""
+        - "&eCliquez pour vous téléporter !"
+        - ""
+      action:
+        type: CONNECT
+        value: "lobby"
+
+    # --- Site internet ---
+    website:
+      slot: 24
+      material: BOOK
+      name: "&d🌐 &5Site Internet"
+      glowing: false
+      lore:
+        - ""
+        - "&7Visitez notre site officiel."
+        - ""
+        - "&ewww.votreserveur.fr"
+        - ""
+        - "&eCliquez pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://www.votreserveur.fr"
+
+    # --- Discord ---
+    discord:
+      slot: 38
+      material: PURPLE_DYE
+      name: "&5💬 &dDiscord"
+      glowing: false
+      lore:
+        - ""
+        - "&7Rejoignez notre serveur Discord !"
+        - ""
+        - "&ediscord.gg/votreserveur"
+        - ""
+        - "&eCliquez pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://discord.gg/votreserveur"
+
+    # --- Boutique ---
+    shop:
+      slot: 40
+      material: EMERALD
+      name: "&a🛒 &2Boutique"
+      glowing: false
+      lore:
+        - ""
+        - "&7Achetez des grades et des cosmétiques."
+        - ""
+        - "&eCliquez pour ouvrir le lien !"
+        - ""
+      action:
+        type: URL
+        value: "https://boutique.votreserveur.fr"
+
+    # --- Vote ---
+    vote:
+      slot: 42
+      material: GOLD_INGOT
+      name: "&6🗳 &eVoter"
+      glowing: false
+      lore:
+        - ""
+        - "&7Votez pour nous et gagnez des récompenses !"
+        - ""
+        - "&eCliquez pour voter !"
+        - ""
+      action:
+        type: URL
+        value: "https://www.votreserveur.fr/vote"
+
+    # --- Fermer le menu ---
+    close:
+      slot: 49
+      material: BARRIER
+      name: "&c✖ &4Fermer"
+      glowing: false
+      lore:
+        - ""
+        - "&7Fermer le menu."
+        - ""
+      action:
+        type: CLOSE
+        value: ""
+
+    # --- Séparateurs décoratifs (vitres grises) ---
+    deco_1:
+      slot: 0
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_2:
+      slot: 1
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_3:
+      slot: 2
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_4:
+      slot: 3
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_5:
+      slot: 5
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_6:
+      slot: 6
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_7:
+      slot: 7
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_8:
+      slot: 8
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_9:
+      slot: 45
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_10:
+      slot: 46
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_11:
+      slot: 47
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_12:
+      slot: 48
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_13:
+      slot: 50
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_14:
+      slot: 51
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_15:
+      slot: 52
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+    deco_16:
+      slot: 53
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      action:
+        type: NONE
+        value: ""
+
+# ============================================================
+# SERVEURS BUNGEECORD
+# Configurez ici tous vos serveurs avec téléportation + joueurs
+#
+# Placeholders dans name/lore :
+#   %players%  → Nombre de joueurs connectés sur ce serveur
+#   %server%   → Nom d'affichage du serveur
+# ============================================================
+servers:
+
+  survival:
+    display-name: "&2⛏ &aSurvie"
+    server-name: "survival"   # Nom exact dans config.yml BungeeCord
+    slot: 10
+    material: GRASS_BLOCK
+    lore:
+      - ""
+      - "&7Mode Survie classique."
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  skyblock:
+    display-name: "&b☁ &3Skyblock"
+    server-name: "skyblock"
+    slot: 11
+    material: END_STONE
+    lore:
+      - ""
+      - "&7Construisez votre île dans le ciel !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  creative:
+    display-name: "&e✏ &6Créatif"
+    server-name: "creative"
+    slot: 12
+    material: BRICKS
+    lore:
+      - ""
+      - "&7Laissez libre cours à votre créativité."
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  pvp:
+    display-name: "&c⚔ &4PvP"
+    server-name: "pvp"
+    slot: 13
+    material: IRON_SWORD
+    lore:
+      - ""
+      - "&7Affrontez d'autres joueurs !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  minigames:
+    display-name: "&d🎮 &5Mini-Jeux"
+    server-name: "minigames"
+    slot: 14
+    material: DIAMOND
+    lore:
+      - ""
+      - "&7Profitez de nombreux mini-jeux !"
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+  rpg:
+    display-name: "&6🗡 &eRPG"
+    server-name: "rpg"
+    slot: 15
+    material: NETHERITE_SWORD
+    lore:
+      - ""
+      - "&7Aventure et quêtes RPG."
+      - ""
+      - "&a● &f%players% joueur(s) en ligne"
+      - ""
+      - "&eCliquez pour rejoindre !"
+      - ""
+
+# ============================================================
+# MESSAGES
+# ============================================================
+messages:
+  no-permission: "&cVous n'avez pas la permission d'utiliser cette commande."
+  teleporting: "&7Connexion au serveur &b%server% &7en cours..."
+  click-link: "&7Cliquez ici pour ouvrir : &b&n%url%"
+  reload-success: "&aConfiguration rechargée avec succès !"

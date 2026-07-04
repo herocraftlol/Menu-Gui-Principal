@@ -1,0 +1,33 @@
+name: MainMenuSpigot
+version: 1.0.0
+main: fr.mainmenu.spigot.MainMenuSpigot
+api-version: 1.20
+author: MainMenu
+description: Plugin Spigot - Menu principal configurable avec GUI
+
+commands:
+  menu:
+    description: Ouvre le menu principal
+    usage: /menu [reload]
+    permission: mainmenu.use
+    aliases: [m, mainmenu]
+  hub:
+    description: Retourne au hub
+    usage: /hub
+    permission: mainmenu.hub
+    aliases: [lobby]
+  lobby:
+    description: Retourne au lobby
+    usage: /lobby
+    permission: mainmenu.hub
+
+permissions:
+  mainmenu.use:
+    description: Permet d'ouvrir le menu
+    default: true
+  mainmenu.reload:
+    description: Permet de recharger la configuration
+    default: op
+  mainmenu.hub:
+    description: Permet d'utiliser /hub et /lobby
+    default: true
